@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice Interview Assistant - Client-Side AI</title>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>🎤 Voice Interview Assistant</h1>
+            <p>Client-Side AI • Real-Time Summarization • Contextual Fillers • &lt;30MB Model</p>
+            <div class="tip">💡 Tip: Use headphones to prevent echo and improve voice recognition accuracy.</div>
+        </div>
+
+        <!-- Metrics -->
+        <div class="metrics-bar">
+            <div class="metric">
+                <div class="metric-label">Model Size</div>
+                <div class="metric-value" id="modelSize">--</div>
+            </div>
+            <div class="metric">
+                <div class="metric-label">Load Time</div>
+                <div class="metric-value" id="loadTime">--</div>
+            </div>
+            <div class="metric">
+                <div class="metric-label">Avg Latency</div>
+                <div class="metric-value good" id="avgLatency">--</div>
+            </div>
+            <div class="metric">
+                <div class="metric-label">Summaries</div>
+                <div class="metric-value" id="inferenceCount">0</div>
+            </div>
+            <div class="metric">
+                <div class="metric-label">Fillers Used</div>
+                <div class="metric-value" id="fillerCount">0</div>
+            </div>
+        </div>
+
+        <!-- Status & Controls -->
+        <div class="status-bar">
+            <div id="status">Initializing...</div>
+            <div class="controls">
+                <button id="startBtn" disabled>🎤 Start Interview</button>
+                <button id="stopBtn" disabled>⏹️ End Interview</button>
+                <button id="clearBtn">🗑️ Clear History</button>
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div class="content-wrapper">
+            <div class="panel">
+                <h3>💬 Interview Conversation</h3>
+                <div class="interview-questions">
+                    <h4>📋 Sample Interview Questions</h4>
+                    <ul>
+                        <li>Tell me about your previous work experience</li>
+                        <li>Describe a challenging project you worked on</li>
+                        <li>What are your technical skills?</li>
+                        <li>How do you handle tight deadlines?</li>
+                    </ul>
+                </div>
+                <div class="chat-container" id="chat">
+                    <div class="empty-state">
+                        <div class="emoji">🎯</div>
+                        <h4>Ready to Begin!</h4>
+                        <p>Click "Start Interview" to gather your details first, then proceed to the main
+                            questions.<br>The AI will listen, summarize, and provide natural fillers.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel">
+                <h3>📝 Live Interview Summary</h3>
+                <div class="summary-box" id="summaryBox"><em style="color: #999;">Real-time summary will appear as you
+                        speak...</em></div>
+                <div id="candidateDetailsBox" class="candidate-details" style="display: none;">
+                    <h4>👤 Candidate Details</h4>
+                    <div id="candidateDetailsContent"></div>
+                </div>
+                <h3 style="margin-top:25px;">💬 Contextual Fillers</h3>
+                <div class="filler-log" id="fillerLog">
+                    <div class="empty-state" style="padding:30px 10px;">
+                        <p style="font-size:14px;">Natural filler phrases will appear during pauses...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div><strong>Challenge Demo:</strong> Ultra-Lightweight Client-Side AI | ONNX Runtime Web | T5-Based Model |
+                Fully Offline</div>
+        </div>
+    </div>
+
+    <!-- Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web/dist/ort.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@xenova/transformers/dist/transformers.min.js"></script>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
