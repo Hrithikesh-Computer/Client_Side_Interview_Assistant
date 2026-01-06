@@ -76,7 +76,7 @@ async function loadModel() {
     statusEl.textContent = "Loading AI model...";
     statusEl.className = "loading";
     tokenizerModel = await window.Transformers.AutoTokenizer.from_pretrained("t5-small");
-    modelSession = await ort.InferenceSession.create("exported_models/interview_model_int8.onnx", {
+    modelSession = await ort.InferenceSession.create("interview_model_int8.onnx", {
         executionProviders: ['wasm'],
         graphOptimizationLevel: 'all'
     });
@@ -299,4 +299,5 @@ document.addEventListener('DOMContentLoaded', () => {
     statusEl.className = "ready";
     startBtn.disabled = false;
     document.getElementById("avgLatency").textContent = "450ms";
+
 });
